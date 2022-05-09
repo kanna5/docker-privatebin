@@ -1,0 +1,21 @@
+---
+
+version: "3"
+
+services:
+  php:
+    image: kanna5/privatebin
+    build: ./images
+    volumes:
+      - data:/usr/local/privatebin/data
+
+  nginx:
+    image: kanna5/privatebin
+    build: ./images
+    ports:
+      - "8000:80"
+    stop_signal: SIGQUIT
+    command: ["nginx", "-g", "daemon off;"]
+
+volumes:
+  data:
