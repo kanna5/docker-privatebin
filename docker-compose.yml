@@ -6,8 +6,10 @@ services:
   php:
     image: kanna5/privatebin
     build: ./images
+    restart: unless-stopped
     volumes:
       - data:/usr/local/privatebin/data
+      - ./conf.php:/usr/local/privatebin/cfg/conf.php:ro
 
   nginx:
     image: kanna5/privatebin
@@ -15,6 +17,7 @@ services:
     ports:
       - "8000:80"
     stop_signal: SIGQUIT
+    restart: unless-stopped
     command: ["nginx", "-g", "daemon off;"]
 
 volumes:

@@ -27,8 +27,10 @@ RUN set -xe; \
     curl -sSLf 'https://github.com/PrivateBin/PrivateBin/archive/refs/tags/1.4.0.tar.gz' \
         | tar --strip-components=1 --no-same-owner -xz; \
     install -d -o www-data -g www-data data; \
-# Use flat bootstrap theme which feels less old.
+# Use flat bootstrap theme which feels less old...
     sed -i '/css\/bootstrap\/bootstrap-theme-/d' tpl/bootstrap.php; \
     rm css/bootstrap/bootstrap-theme-*
+
+WORKDIR /usr/local/privatebin
 
 EXPOSE 80/tcp
