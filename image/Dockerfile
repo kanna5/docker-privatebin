@@ -24,7 +24,7 @@ RUN set -xe; \
 # Copy application files
     mkdir -p /usr/local/privatebin; \
     cd /usr/local/privatebin; \
-    curl -sSLf 'https://github.com/PrivateBin/PrivateBin/archive/refs/tags/1.5.2.tar.gz' \
+    curl -sSLf 'https://github.com/PrivateBin/PrivateBin/archive/refs/tags/1.6.0.tar.gz' \
         | tar --strip-components=1 --no-same-owner -xz; \
     install -d -o www-data -g www-data data; \
 # Use flat bootstrap theme which feels less old...
