@@ -1,4 +1,4 @@
-FROM php:8.1-fpm-alpine
+FROM php:8.2-fpm-alpine
 
 RUN set -xe; \
 # nginx
@@ -24,7 +24,7 @@ RUN set -xe; \
 # Copy application files
     mkdir -p /usr/local/privatebin; \
     cd /usr/local/privatebin; \
-    curl -sSLf 'https://github.com/PrivateBin/PrivateBin/archive/refs/tags/1.7.6.tar.gz' \
+    curl -sSLf 'https://github.com/PrivateBin/PrivateBin/archive/refs/tags/1.7.8.tar.gz' \
         | tar --strip-components=1 --no-same-owner -xz; \
     install -d -o www-data -g www-data data;
 
