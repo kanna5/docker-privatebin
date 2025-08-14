@@ -1,7 +1,4 @@
 ---
-
-version: "3"
-
 services:
   php:
     image: kanna5/privatebin
@@ -10,15 +7,25 @@ services:
     volumes:
       - data:/usr/local/privatebin/data
       - ./conf.php:/usr/local/privatebin/cfg/conf.php:ro
+    networks:
+      default:
+        ipv4_address: 172.31.255.2
 
   nginx:
     image: kanna5/privatebin
     build: ./images
-    ports:
-      - "8000:80"
     stop_signal: SIGQUIT
     restart: unless-stopped
     command: ["nginx", "-g", "daemon off;"]
+    networks:
+      default:
+        ipv4_address: 172.31.255.3
 
 volumes:
   data:
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 172.31.255.0/24

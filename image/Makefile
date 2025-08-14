@@ -1,7 +1,7 @@
 IMGNAME := kanna5/privatebin
 
 image:
-	DOCKER_BUILDKIT=1 docker build --no-cache -t $(IMGNAME) .
+	docker build --pull -t $(IMGNAME) .
 
 push:
 	docker push $(IMGNAME)
